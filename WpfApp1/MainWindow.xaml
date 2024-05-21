@@ -1,0 +1,35 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:t="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="400" FontFamily="Arial" FontSize="16" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Wybierz opcję obliczania: " Grid.ColumnSpan="2" TextAlignment="Center" Margin="0 5 0 0"/>
+        <Button Margin="20,30,20,10" Background="Red" Foreground="white" Click="wybierzProcedure" Name="log">Logarytm</Button>
+        <ComboBox Margin="20,72,20,0" Height="22" VerticalAlignment="Top" Grid.RowSpan="2" FontSize="12" SelectionChanged="zmianaLog" Name="wyborLog" IsEnabled="false">
+            <ComboBoxItem>Oblicz działanie</ComboBoxItem>
+            <ComboBoxItem>Znajdz liczbe logarytmowaną</ComboBoxItem>
+            <ComboBoxItem>Znajdz podstawe</ComboBoxItem>
+        </ComboBox>
+        <Button Grid.Column="1" Background="Red" Margin="20,30,20,10" Foreground="white" Click="wybierzProcedure" Name="ciag">Ciąg</Button>
+        <t:WatermarkTextBox Grid.Row="1"  Height="25" Grid.ColumnSpan="2" Width="100" Margin="124 0 0 0" Watermark="Wartość N" Name="nn" FontSize="14" IsEnabled="True"/>
+        <t:WatermarkTextBox Grid.Row="1"  Height="25" Grid.ColumnSpan="2" Width="284" Margin="0 0 60 0" Watermark="" Name="pole" FontSize="14" IsEnabled="False"/>
+        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="right" Height="25" Background="Gainsboro" Width="60" Margin="0 0 20 0" Name="oblicz" IsEnabled="false" Click="obliczenia">Oblicz</Button>
+        <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Name="kalk" Text="" Margin="10 0 0 0"></TextBlock>
+    </Grid>
+</Window>
