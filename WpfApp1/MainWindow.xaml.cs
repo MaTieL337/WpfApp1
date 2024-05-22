@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
@@ -24,10 +24,10 @@ namespace WpfApp1
             InitializeComponent();
         }
 
-        bool? procedura = null;
+        bool procedura;
         // Jeśli procedura równa się null to nic się nie dzieje. Jeśli True to oblicza logarytm a jeśli False to ciąg.
 
-        private void wybierzProcedure(object sender, RoutedEventArgs e) // Ta metoda służy do zmiany stanu aplikacji na podstawie wyboru użytkownika między
+        private void wybierzProcedure(object sender) // Ta metoda służy do zmiany stanu aplikacji na podstawie wyboru użytkownika między
                                                                         // logarytmy a ciągi. Ustawia odpowiednie właściwości dla przycisków i pola tekstowego
                                                                         // , aby dostosować interfejs użytkownika do wybranej opcji.
         {
@@ -60,7 +60,7 @@ namespace WpfApp1
             }
         }
 
-        private void zmianaLog(object sender, RoutedEventArgs e)  //Ta metoda aktywuje pole tekstowe i przycisk obliczania,
+        private void zmianaLog()  //Ta metoda aktywuje pole tekstowe i przycisk obliczania,
                                                                   //gdy procedura logarytmiczna jest wybrana przez użytkownika.
         {
             if (procedura==true) 
@@ -108,18 +108,13 @@ namespace WpfApp1
             return Convert.ToDouble(new System.Data.DataTable().Compute(expression, ""));
         }
 
-        private void obliczenia(object sender, RoutedEventArgs e) // Logika obliczeń.
+        private void obliczenia() // Logika obliczeń.
         {
             if(procedura==true) 
             {
                 if (wyborLog.SelectedIndex == 0)
                 {
-                    try
-                    {
-                        pole.Text = pole.Text.Replace(" ", "");
-                        double result = Evaluate(pole.Text);
-                        kalk.Text = "Wynik: "+result.ToString();
-                    }
+                    try{kalk.Text = "Wynik: "+ Evaluate(pole.Text.trim()).ToString();}
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message, "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
